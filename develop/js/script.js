@@ -11,6 +11,11 @@ let cityName = cityInput.value;
 
 apiKey = `58f46e928881407740f79f4c8040c421`;
 
+// Search History
+
+var x = localStorage.getItem("city")
+document.getElementById("list-item1").innerHTML = x;
+
 
 // Time and Date
 
@@ -24,13 +29,18 @@ document.getElementById("date").innerHTML = todaysDate;
 
 }, 1000);
 
+// Set/Get History Functions
+function createItem() {
+localStorage.setItem("city", cityInput.value)
+}
 
 // Today's Weather
 
 weatherForm.addEventListener('submit', async (e) => {
     e.preventDefault();
 
-    
+    createItem();
+
     if (!cityName) return;
 
     var apiKey = `58f46e928881407740f79f4c8040c421`;
@@ -76,103 +86,39 @@ weatherForm.addEventListener('submit', async (e) => {
     const apiUrlDays = `https://api.openweathermap.org/data/2.5/forecast?q=${cityName}&appid=${apiKey}&units=imperial`;
     
 // Day 1
-    try {
-        const response = await fetch(apiUrlDays);
-        const data = await response.json();
 
-        console.log(data);
-        //ICON
-        icon1.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[5].weather[0].icon}@2x.png`);
-        //DATE
-        document.getElementById("day1").innerHTML = `${data.list[5].dt_txt}`;
-        
-        //TEMP
-        document.getElementById("temp1").innerHTML = `Temperature: ${data.list[5].main.temp}°F`;
-        //HUMIDITY
-        document.getElementById("humidity1").innerHTML = `Humidity: ${data.list[5].main.humidity}%`;
-        //WIND SPEED
-        document.getElementById("wind-speed1").innerHTML = `Wind Speed: ${data.list[5].wind.speed} m/s`;
+const response = await fetch(apiUrlDays);
+const data = await response.json();
 
-    } catch (error) {
-        console.error('Error fetching weather data:', error);
-        temperature.innerHTML = 'Weather data not available';
-        humidity.innerHTML = '';
-        windSpeed.innerHTML = '';
-    }
+console.log(data)
 
-    // Day 2
-    try {
-        const response = await fetch(apiUrlDays);
-        const data = await response.json();
+icon1.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[3].weather[0].icon}@2x.png`);
+document.querySelector('#temp1').innerHTML = 'Temperature: ' + data.list[3].main.temp + '°';
+document.querySelector('#humidity1').innerHTML = 'Humidity: ' + data.list[3].main.humidity + '%';
+document.querySelector('#wind-speed1').innerHTML = 'Wind Speed: ' + data.list[3].wind.speed + ' m/s';
 
-        console.log(data);
-
-        document.getElementById("day2").innerHTML = `${data.list[13].dt_txt}`;
-        icon2.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[13].weather[0].icon}@2x.png`);
-        document.getElementById("temp2").innerHTML = `Temperature: ${data.list[13].main.temp}°F`;
-        document.getElementById("humidity2").innerHTML = `Humidity: ${data.list[13].main.humidity}%`;
-        document.getElementById("wind-speed2").innerHTML = `Wind Speed: ${data.list[13].wind.speed} m/s`;
-    } catch (error) {
-        console.error('Error fetching weather data:', error);
-        temperature.innerHTML = 'Weather data not available';
-        humidity.innerHTML = '';
-        windSpeed.innerHTML = '';
-    }
+//     // Day 2
+icon2.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[11].weather[0].icon}@2x.png`);
+document.querySelector('#temp2').innerHTML = 'Temperature: ' + data.list[11].main.temp + '°';
+document.querySelector('#humidity2').innerHTML = 'Humidity: ' + data.list[11].main.humidity + '%';
+document.querySelector('#wind-speed2').innerHTML = 'Wind Speed: ' + data.list[11].wind.speed + ' m/s';
     
-    // Day 3
-    try {
-        const response = await fetch(apiUrlDays);
-        const data = await response.json();
-
-        console.log(data);
-
-        document.getElementById("day3").innerHTML = `${data.list[21].dt_txt}`;
-        icon3.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[21].weather[0].icon}@2x.png`);
-        document.getElementById("temp3").innerHTML = `Temperature: ${data.list[21].main.temp}°F`;
-        document.getElementById("humidity3").innerHTML = `Humidity: ${data.list[21].main.humidity}%`;
-        document.getElementById("wind-speed3").innerHTML = `Wind Speed: ${data.list[21].wind.speed} m/s`;
-    } catch (error) {
-        console.error('Error fetching weather data:', error);
-        temperature.innerHTML = 'Weather data not available';
-        humidity.innerHTML = '';
-        windSpeed.innerHTML = '';
-    }
+//     // Day 3
+icon3.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[19].weather[0].icon}@2x.png`);
+document.querySelector('#temp3').innerHTML = 'Temperature: ' + data.list[19].main.temp + '°';
+document.querySelector('#humidity3').innerHTML = 'Humidity: ' + data.list[19].main.humidity + '%';
+document.querySelector('#wind-speed3').innerHTML = 'Wind Speed: ' + data.list[19].wind.speed + ' m/s';
     
-    // Day 4
-    try {
-        const response = await fetch(apiUrlDays);
-        const data = await response.json();
-
-        console.log(data);
-
-        document.getElementById("day4").innerHTML = `${data.list[29].dt_txt}`;
-        icon4.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[29].weather[0].icon}@2x.png`);
-        document.getElementById("temp4").innerHTML = `Temperature: ${data.list[29].main.temp}°F`;
-        document.getElementById("humidity4").innerHTML = `Humidity: ${data.list[29].main.humidity}%`;
-        document.getElementById("wind-speed4").innerHTML = `Wind Speed: ${data.list[29].wind.speed} m/s`;
-    } catch (error) {
-        console.error('Error fetching weather data:', error);
-        temperature.innerHTML = 'Weather data not available';
-        humidity.innerHTML = '';
-        windSpeed.innerHTML = '';
-    }
+//     // Day 4
+icon4.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[27].weather[0].icon}@2x.png`);
+document.querySelector('#temp4').innerHTML = 'Temperature: ' + data.list[27].main.temp + '°';
+document.querySelector('#humidity4').innerHTML = 'Humidity: ' + data.list[27].main.humidity + '%';
+document.querySelector('#wind-speed4').innerHTML = 'Wind Speed: ' + data.list[27].wind.speed + ' m/s';
     
-    // Day 5
-    try {
-        const response = await fetch(apiUrlDays);
-        const data = await response.json();
+//     // Day 5
+icon5.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[35].weather[0].icon}@2x.png`);
+document.querySelector('#temp5').innerHTML = 'Temperature: ' + data.list[35].main.temp + '°';
+document.querySelector('#humidity5').innerHTML = 'Humidity: ' + data.list[35].main.humidity + '%';
+document.querySelector('#wind-speed5').innerHTML = 'Wind Speed: ' + data.list[35].wind.speed + ' m/s';
 
-        console.log(data);
-        
-        document.getElementById("day5").innerHTML = `${data.list[37].dt_txt}`;
-        icon5.setAttribute("src", `http://openweathermap.org/img/wn/${data.list[37].weather[0].icon}@2x.png`);
-        document.getElementById("temp5").innerHTML = `Temperature: ${data.list[37].main.temp}°F`;
-        document.getElementById("humidity5").innerHTML = `Humidity: ${data.list[37].main.humidity}%`;
-        document.getElementById("wind-speed5").innerHTML = `Wind Speed: ${data.list[37].wind.speed} m/s`;
-    } catch (error) {
-        console.error('Error fetching weather data:', error);
-        temperature.innerHTML = 'Weather data not available';
-        humidity.innerHTML = '';
-        windSpeed.innerHTML = '';
-    }
 })

@@ -99,6 +99,17 @@ header {
     grid-row-end: 14;
 }
 
+.forecast-icon {
+    width: 200px;
+    margin-left: 60px;
+}
+
+.inner-forecast-container {
+    font-size: 25px;
+    margin: 20px;
+}
+
 li {
     list-style: none;
+    color: white;
 }
