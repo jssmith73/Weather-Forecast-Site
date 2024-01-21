@@ -1,6 +1,5 @@
-
 body {
-    background-image: url(/images/noaa-kcvlb727mn8-unsplash.jpg);
+    background-image: url('../../images/noaa-kcvlb727mn8-unsplash.jpg');
     background-repeat: no-repeat;
     background-size: cover;
 }
@@ -11,13 +10,14 @@ body {
 }
 
 #weatherForm {
-    
+
     grid-row-start: 2;
     grid-row-end: 8;
     background-color: rgba(24, 24, 27, 0.8);
     border-radius: 15px;
     display: flex;
     flex-direction: column;
+    text-align: center;
 }
 
 #cityInput {
@@ -41,11 +41,6 @@ body {
 }
 
 header {
-    /* background-color: rgba(24, 24, 27, 0.8);
-    width: 100%;
-    padding: 15px;
-    margin: none;
-    overflow-x: hidden; */
     height: 80px;
     grid-column-start: 1;
     grid-column-end: 6;
@@ -84,11 +79,24 @@ header {
 #today {
     grid-row-start: 2;
     grid-row-end: 8;
-    grid-column-start: 2;
-    grid-column-end: 6;
+    grid-column-start: 3;
+    grid-column-end: 5;
     background-color: rgba(24, 24, 27, 0.8);
     border-radius: 15px;
     color: white;
+    padding: 20px;
+}
+
+#clear {
+    width: 25%;
+    border-radius: 5px;
+    color: white;
+    background-color: transparent;
+    
+}
+
+#weather-icon {
+    width: 200px;
 }
 
 .future-forcast-container {
@@ -99,17 +107,34 @@ header {
     grid-row-end: 14;
 }
 
+.forecastDate {
+    font-size: 20px;
+    text-align: center;
+}
+
 .forecast-icon {
-    width: 200px;
-    margin-left: 60px;
+    width: 150px;
+    margin: 20px;
 }
 
 .inner-forecast-container {
-    font-size: 25px;
+    font-size: 20px;
     margin: 20px;
+}
+
+#output {
+    display: flex;
+    flex-direction: column;
+    font-size: larger;
 }
 
 li {
     list-style: none;
     color: white;
+    margin: 10px;
+}
+
+li:hover {
+    color: yellow;
+    cursor: pointer;
 }

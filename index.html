@@ -1,119 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Weather Forecast Site</title>
     <link rel="stylesheet" href="develop/css/style.css">
     <!-- Ctrl+shift+P - Google Fonts - Link -->
-    <link href="https://fonts.googleapis.com/css?family=Lora:regular,500,600,700,italic,500italic,600italic,700italic" rel="stylesheet" />
+    <link href="https://fonts.googleapis.com/css?family=Lora:regular,500,600,700,italic,500italic,600italic,700italic"
+        rel="stylesheet" />
 </head>
+
 <body>
     <div class="container">
 
-    <!-- Header Element (Time & Date)-->
+        <!-- Header Element (Time & Date)-->
 
-    <header>
-        <h2 id="header-title">Weather Forecast</h2>
-        <div class="time-date">
-          <div class="time" id="time"></div>
-          <hr>
-          <div class="date" id="date"></div>
+        <header>
+            <h2 id="header-title">Weather Forecast</h2>
+            <div class="time-date">
+                <div class="time" id="time"></div>
+                <hr>
+                <div class="date" id="date"></div>
+            </div>
+        </header>
+        <hr>
+
+        <!-- Search Bar -->
+
+        <form class="others" id="weatherForm">
+            <input class="citySearch" id="cityInput" type="text" placeholder="City Name" style="text-align: center;">
+            <button class="submitBtn" id="submitBtn" onclick="addItem()">Submit</button>
+            <div class="output" id="city-log">
+                <ul id="output" onclick="fillInput(event)">
+                    <li class="storageItem" id="list-item1"></li>
+                    <li class="storageItem" id="list-item2"></li>
+                    <li class="storageItem" id="list-item3"></li>
+                    <li class="storageItem" id="list-item4"></li>
+                    <li class="storageItem" id="list-item5"></li>
+                </ul>
+            </div>
+            <div style="text-align: center; margin-bottom: 15px">
+            <button id="clear" onclick="localStorage.
+            clear()">Clear List</button>
+            </div>
+        </form>
+
+        <!-- Today's Weather  -->
+
+        <div id="today">
+            <h1 id="todaysHead"></h1>
+            <img src="" id="weather-icon">
+            <div id="temperature"></div>
+            <div id="humidity"></div>
+            <div id="wind-speed"></div>
         </div>
-    </header>
-    <hr>
 
-    <!-- Search Bar -->
+        <!-- 5-day Forecast Elements -->
 
-    <form class="others" id="weatherForm">
-        <input class="citySearch" id="cityInput" type="text" placeholder="City Name" style="text-align: center;">
-        <button class="submitBtn" id="submitBtn">Submit</button>
-        <div class="others" id="city-log">
-            <ul>
-                <li id="list-item1"></li>
-                <li id="list-item2"></li>
-                <li id="list-item3"></li>
-                <li id="list-item4"></li>
-                <li id="list-item5"></li>
-            </ul>
+        <div class="future-forcast-container" id="day1">
+            <h4 class="forecastDate" id="forecastDay1"></h4>
+            <img id="icon1" src="" class="forecast-icon">
+            <div class="inner-forecast-container">
+                <div id="temp1">
+                    <span></span>
+                </div>
+                <br>
+                <div id="humidity1">
+                    <span></span>
+                </div>
+                <br>
+                <div id="wind-speed1">
+                    <span></span>
+                </div>
+            </div>
         </div>
-    </form>
-
-    <!-- Today's Weather  -->
-
-    <div id="today">
-        <h1 id="todaysHead"></h1>
-        <img src="" id="weather-icon">
-        <div id="temperature"></div>
-        <div id="humidity"></div>
-        <div id="wind-speed"></div>
-    </div>
-
-    <!-- 5-day Forecast Elements -->
-
-    <div class="future-forcast-container" id="day1">
-        <img id="icon1" src="" class="forecast-icon">
-     <div class="inner-forecast-container">
-        <div id="temp1"></div>
-        <br>
-        <div id="humidity1"></div>
-        <br>
-        <div id="wind-speed1"></div>
-    </div>
-     </div>
-    <div class="future-forcast-container" id="day2">
-        <img id="icon2" src="" class="forecast-icon">
-      <div class="inner-forecast-container">
-        <div id="temp2"></div>
-        <br>
-        <div id="humidity2"></div>
-        <br>
-        <div id="wind-speed2"></div>
-      </div>
-    </div>
-    <div class="future-forcast-container" id="day3">
-        <img id="icon3" src="" class="forecast-icon">
-     <div class="inner-forecast-container">
-        <div id="temp3"></div>
-        <br>
-        <div id="humidity3"></div>
-        <br>
-        <div id="wind-speed3"></div>
-    </div>
-     </div>
-    <div class="future-forcast-container" id="day4">
-        <img id="icon4" src="" class="forecast-icon">
-     <div class="inner-forecast-container">
-        <div id="temp4"></div>
-        <br>
-        <div id="humidity4"></div>
-        <br>
-        <div id="wind-speed4"></div>
-    </div>
-     </div>
-    <div class="future-forcast-container" id="day5">
-        <img id="icon5" src="" class="forecast-icon">
-     <div class="inner-forecast-container">
-        <div id="temp5"></div>
-        <br>
-        <div id="humidity5"></div>
-        <br>
-        <div id="wind-speed5"></div>
-    </div>
-    </div>
-
-    <!-- Footer -->
-
-    <footer></footer>
-
+        <div class="future-forcast-container" id="day2">
+            <h4 class="forecastDate" id="forecastDay2"></h4>
+            <img id="icon2" src="" class="forecast-icon">
+            <div class="inner-forecast-container">
+                <div id="temp2"></div>
+                <br>
+                <div id="humidity2"></div>
+                <br>
+                <div id="wind-speed2"></div>
+            </div>
+        </div>
+        <div class="future-forcast-container" id="day3">
+            <h4 class="forecastDate" id="forecastDay3"></h4>
+            <img id="icon3" src="" class="forecast-icon">
+            <div class="inner-forecast-container">
+                <div id="temp3"></div>
+                <br>
+                <div id="humidity3"></div>
+                <br>
+                <div id="wind-speed3"></div>
+            </div>
+        </div>
+        <div class="future-forcast-container" id="day4">
+            <h4 class="forecastDate" id="forecastDay4"></h4>
+            <img id="icon4" src="" class="forecast-icon">
+            <div class="inner-forecast-container">
+                <div id="temp4"></div>
+                <br>
+                <div id="humidity4"></div>
+                <br>
+                <div id="wind-speed4"></div>
+            </div>
+        </div>
+        <div class="future-forcast-container" id="day5">
+            <h4 class="forecastDate" id="forecastDay5"></h4>
+            <img id="icon5" src="" class="forecast-icon">
+            <div class="inner-forecast-container">
+                <div id="temp5"></div>
+                <br>
+                <div id="humidity5"></div>
+                <br>
+                <div id="wind-speed5"></div>
+            </div>
+        </div>
     </div>
 
     <script src="develop/js/script.js"></script>
     <script src="https://cdn.jsdelivr.net/npm/dayjs@1/dayjs.min.js"></script>
     <script src="https://code.jquery.com/jquery-3.5.1.min.js"
-      integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0="
-      crossorigin="anonymous"
-    ></script>
-    
+        integrity="sha256-9/aliU8dGd2tb6OSsuzixeV4y/faTqgFtohetphbbj0=" crossorigin="anonymous"></script>
+
 </body>
+
 </html>
